@@ -2,30 +2,9 @@
 //=======================================================================+
 // Copyright(c) 2021- Keita Miyaoka All Rights Reserved.
 //=======================================================================+
-// USE OF A COPYRIGHT NOTICE IS PRECAUTIONARY ONLY AND DOES NOT IMPLY
-// PUBLICATION OR DISCLOSURE.
-//=======================================================================+
-// THIS SOFTWARE CONTAINS CONFIDENTIAL INFORMATION AND TRADE SECRETS OF
-// MICRON TECHNOLOGY, INC. USE, DISCLOSURE, OR REPRODUCTION IS PROHIBITED
-// WITHOUT THE PRIOR EXPRESS WRITTEN PERMISSION OF MICRON TECHNOLOGY, INC.
-//=======================================================================+
  
-  // matplotlib-cpp
-  // Python39
-  // g++ -o TTdwarf.exe .\TTdwarf.cpp
-  // -IC:\matplotlib-cpp\ -IC:\Python39\include\ 
-  // -IC:\Python39\Lib\site-packages\numpy\core\include
-  // -IC:\Python39\Lib\site-packages\numpy\core\include\numpy
-  // -LC:\Python39\libs -lpython39
-  //
-  //g++ -o TTdwarf.exe .\TTdwarf.cpp
-  //-IC:\matplotlib-cpp\ -I ${env:PYTHONDIR}\include\ 
-  //-I ${env:PYTHONDIR}\Lib\site-packages\numpy\core\include
-  //-I ${env:PYTHONDIR}\Lib\site-packages\numpy\core\include\numpy
-  //-L ${env:PYTHONDIR}\libs -lpython39 -w
  
   #define  _USE_MATH_DEFINES
-  //#define  _USE_32BIT_TIME_T
   #define  YearUnit 31541110   
   #define  MonthUnit 2592420 
   #define  DayUnit 86414    
@@ -217,7 +196,7 @@
         cout << "##### e.g. ./TTdwarf.exe argv1.csv #####" << endl;
         cout << "##### argv1.csv : LotID,WaferId,WaferInstance,Datetime,value1,value2,value3,..... #####\n" << endl;
         sleep(5);    
-        return 1;  // 異常終了
+        return 1;  
     }
  
     long long i=0;
@@ -342,7 +321,7 @@
         }
         plt::figure_size(600, 400);
         //plt::plot(t, y, "ko");
-        plt::plot(Lt_half_row, y_ave); // true = accumulate hist
+        plt::plot(Lt_half_row, y_ave); 
         plt::grid("true");
         plt::ylabel("");
         plt::xlabel("");
@@ -352,7 +331,7 @@
         m["fontstyle"] = "normal";
         m["fontstretch"] = "normal";
         plt::xticks(Lt_row,Lx_row,m);
-        plt::axis("tight");//on,off,equal,scaled,tight,auto,image,square
+        plt::axis("tight");
         plt::title(lvec[k]);
         //char outdir[30] = "./image";     
         //strcat(outdir, DID.c_str());
@@ -372,35 +351,8 @@
         k = k + 1;
  
     }
-  /*
-    //plt::figure(1);
-    plt::figure_size(600, 300);
-    plt::plot(t, y, "bo");
-    plt::grid("true");
-    plt::ylabel("");
-    plt::xlabel("");
-    std::map<string,string> m;
-    m["rotation"] = "vertical";
-    m["fontsize"] = "small";
-    m["fontstyle"] = "normal";
-    m["fontstretch"] = "normal";
-    plt::xticks(Lt_row,Lx_row,m);
-    plt::axis("tight");//on,off,equal,scaled,tight,auto,image,square
- 
-    //plt::named_plot("log(x)", x, y);
-    //plt::xlim(0, 1000*1000);
-    //plt::ylim(0, 1000*1000);
-    plt::title(ytitle);
-    //plt::suptitle(ytitle);
-    //plt::legend("center", {0.5, 0, 0.5, 0.5});
-    std::string out_image_name = "./" + ytitle + ".jpeg";
-    plt::tight_layout();
-    plt::save("out.jpeg");
-    plt::show();
-    //plt::close();
-  */
+
     ifs_csv_file.close();
-    //ofs_csv_file.close();
     return 0;
  
   }
